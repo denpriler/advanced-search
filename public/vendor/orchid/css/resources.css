@@ -1,0 +1,15 @@
+.page-platform-resource-list .command-bar-wrapper {
+    display: none !important;
+}
+
+.page-platform-resource-list .breadcrumb {
+    margin-bottom: 2em !important;
+}
+
+.page-platform-resource-view .command-bar-wrapper {
+    display: none !important;
+}
+
+.page-platform-resource-view .breadcrumb {
+    margin-bottom: 2em !important;
+}
