@@ -1,8 +1,18 @@
 <?php
 
 return [
-    'labels'  => [
-        'item'  => 'Item',
-        'items' => 'Items'
+    'labels' => [
+        'home-advisor' => 'Home Advisor'
+    ],
+    'search' => [
+        'labels'  => [
+            'full-text-search' => 'Full Text Search'
+        ],
+        'inputs'  => [
+            'search' => 'Search...'
+        ],
+        'buttons' => [
+            'search' => 'Search'
+        ]
     ]
 ];

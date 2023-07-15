@@ -2,14 +2,17 @@
 
 namespace App\Models\HomeAdvisor;
 
+use App\Orchid\Presenters\HomeAdviser\HomeAdviserItemPresenter;
 use Illuminate\Database\Eloquent\Model;
+use JetBrains\PhpStorm\ArrayShape;
+use Laravel\Scout\Searchable;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
 class HomeAdvisorItem extends Model
 {
-    use AsSource, Filterable, Attachable;
+    use AsSource, Filterable, Attachable, Searchable;
 
     protected $connection = 'home_advisor';
     protected $table = 'homeadvisor_item';
@@ -59,4 +62,37 @@ class HomeAdvisorItem extends Model
         'name',
         'rating'
     ];
+
+    /**
+     * Get the name of the index associated with the model.
+     */
+    public function searchableAs(): string
+    {
+        return 'home_advisor_item_index';
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array<string, mixed>
+     */
+    public function toSearchableArray(): array
+    {
+        return [
+            'id'      => $this->getKey(),
+            'name'    => $this->name,
+            'rating'  => $this->rating,
+            'details' => $this->details,
+        ];
+    }
+
+    /**
+     * Get the presenter for the model.
+     *
+     * @return HomeAdviserItemPresenter
+     */
+    public function presenter()
+    {
+        return new HomeAdviserItemPresenter($this);
+    }
 }

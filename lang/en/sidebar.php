@@ -1,7 +1,8 @@
 <?php
 return [
-    'labels' => [
+    'labels'    => [
         'access-control' => 'Access Control',
+        'items'          => 'Items'
     ],
     'resources' => [
         'home_advisor' => 'Home Advisor'

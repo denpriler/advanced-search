@@ -79,8 +79,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title(__('Resources'))
                 ->icon('bs.folder')
                 ->list([
-                    Menu::make(__('resources.labels.items'))
-                        ->route('platform.resource.list', ['resource' => 'home-advisor-items'])
+                    Menu::make(__('sidebar.labels.items'))
+                        ->route('platform.home-advisor.item.list')
                         ->permission('manager.home_advisor')
                 ]),
 

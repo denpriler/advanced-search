@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Orchid\Platform\Dashboard;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,8 +17,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(Dashboard $dashboard): void
+    public function boot(): void
     {
-        $dashboard->registerResource('stylesheets', '/vendor/orchid/css/resources.css');
     }
 }

@@ -244,7 +244,7 @@ return [
      */
 
     'search' => [
-        // \App\Models\User::class
+        \App\Models\HomeAdvisor\HomeAdvisorItem::class
     ],
 
     /*
