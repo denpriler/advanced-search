@@ -33,7 +33,7 @@ class HomeAdviserItemPresenter extends Presenter implements Searchable, Personab
      */
     public function subTitle(): string
     {
-        return $this->entity->details;
+        return $this->entity->phone . ', ' . $this->entity->email . ', ' . $this->entity->website;
     }
 
     /**

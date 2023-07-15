@@ -3,6 +3,7 @@
 namespace App\Models\HomeAdvisor;
 
 use App\Orchid\Presenters\HomeAdviser\HomeAdviserItemPresenter;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\ArrayShape;
 use Laravel\Scout\Searchable;
@@ -43,6 +44,16 @@ class HomeAdvisorItem extends Model
         'bizid'
     ];
 
+    /**
+     * Get location.
+     */
+    protected function location(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->country . ', ' . $this->state_region . ', ' . $this->city . ', ' . $this->address . ', ' . $this->zip
+        );
+    }
+
     protected $casts = [
         'rating'            => 'double',
         'reviews_qty'       => 'integer',
@@ -60,7 +71,9 @@ class HomeAdvisorItem extends Model
      */
     protected $allowedSorts = [
         'name',
-        'rating'
+        'phone',
+        'email',
+        'website'
     ];
 
     /**
@@ -79,10 +92,11 @@ class HomeAdvisorItem extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id'      => $this->getKey(),
-            'name'    => $this->name,
-            'rating'  => $this->rating,
-            'details' => $this->details,
+            'id'       => $this->getKey(),
+            'name'     => $this->name,
+            'email'    => $this->email,
+            'website'  => $this->website,
+            'location' => $this->location,
         ];
     }
 

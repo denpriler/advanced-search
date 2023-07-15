@@ -214,5 +214,17 @@ return [
         'username'                 => 'username',
         'year'                     => 'year',
         'rating'                   => 'rating',
+        'website'                  => 'website',
+        'reviews_qty'              => 'reviews quantity',
+        'highly_rated_for'         => 'highly rated for',
+        'recommend'                => 'recommend',
+        'years_in_business'        => 'years in business',
+        'cities_served'            => 'served cities',
+        'allservices'              => 'all services',
+        'cost'                     => 'cost',
+        'url'                      => 'url',
+        'alias'                    => 'alias',
+        'category'                 => 'category',
+        'approved_status'          => 'approved status'
     ],
 ];

@@ -27,14 +27,18 @@ class HomeAdvisorItemTable extends Table
     protected function columns(): iterable
     {
         return [
-            TD::make('id'),
-            TD::make('name')
+            TD::make('id', 'ID'),
+            TD::make('name', ucfirst(__('validation.attributes.name')))
                 ->render(function (HomeAdvisorItem $item) {
                     return Link::make($item->name)
                         ->route('platform.home-advisor.item.view', $item);
                 })
                 ->sort(),
-            TD::make('rating')
+            TD::make('email', ucfirst(__('validation.attributes.email')))
+                ->sort(),
+            TD::make('phone', ucfirst(__('validation.attributes.phone')))
+                ->sort(),
+            TD::make('website', ucfirst(__('validation.attributes.website')))
                 ->sort()
         ];
     }

@@ -134,7 +134,7 @@ return [
         'key'            => env('MEILISEARCH_KEY'),
         'index-settings' => [
             App\Models\HomeAdvisor\HomeAdvisorItem::class => [
-                'filterableAttributes' => ['id', 'name', 'rating', 'details'],
+                'filterableAttributes' => ['id', 'name', 'email', 'website'],
                 'sortableAttributes'   => ['created_on'],
             ]
         ],
