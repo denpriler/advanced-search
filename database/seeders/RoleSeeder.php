@@ -26,5 +26,41 @@ class RoleSeeder extends Seeder
                 ]
             ]
         );
+        Role::updateOrCreate(
+            [
+                'slug' => 'home-advisor-manager'
+            ],
+            [
+                'name'        => __('permissions.roles.home-advisor-manager'),
+                'slug'        => 'home-advisor-manager',
+                'permissions' => [
+                    'manager.home_advisor' => 1
+                ]
+            ]
+        );
+        Role::updateOrCreate(
+            [
+                'slug' => 'nd-manager'
+            ],
+            [
+                'name'        => __('permissions.roles.nd-manager'),
+                'slug'        => 'nd-manager',
+                'permissions' => [
+                    'manager.nd' => 1
+                ]
+            ]
+        );
+        Role::updateOrCreate(
+            [
+                'slug' => 'yelp-manager'
+            ],
+            [
+                'name'        => __('permissions.roles.yelp-manager'),
+                'slug'        => 'yelp-manager',
+                'permissions' => [
+                    'manager.yelp' => 1
+                ]
+            ]
+        );
     }
 }
