@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'labels' => [
+    'labels'  => [
         'home-advisor' => 'Home Advisor'
     ],
-    'search' => [
+    'search'  => [
         'labels'  => [
             'full-text-search' => 'Full Text Search'
         ],
@@ -13,6 +13,15 @@ return [
         ],
         'buttons' => [
             'search' => 'Search'
+        ]
+    ],
+    'filters' => [
+        'ID' => [
+            'title'       => 'ID',
+            'placeholder' => 'Search by ID'
+        ],
+        'where-like' => [
+            'placeholder' => 'Search by :parameter'
         ]
     ]
 ];

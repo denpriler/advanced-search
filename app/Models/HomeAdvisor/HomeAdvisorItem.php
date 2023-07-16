@@ -9,6 +9,8 @@ use JetBrains\PhpStorm\ArrayShape;
 use Laravel\Scout\Searchable;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Like;
+use Orchid\Filters\Types\Where;
 use Orchid\Screen\AsSource;
 
 class HomeAdvisorItem extends Model
@@ -74,6 +76,17 @@ class HomeAdvisorItem extends Model
         'phone',
         'email',
         'website'
+    ];
+
+    /**
+     * Name of columns to which http filtering can be applied
+     */
+    protected $allowedFilters = [
+        'id'      => Where::class,
+        'name'    => Like::class,
+        'phone'   => Like::class,
+        'email'   => Like::class,
+        'website' => Like::class,
     ];
 
     /**
