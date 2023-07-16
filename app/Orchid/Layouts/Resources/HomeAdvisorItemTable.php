@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Orchid\Layouts\HomeAdvisor;
+namespace App\Orchid\Layouts\Resources;
 
-use App\Models\HomeAdvisor\HomeAdvisorItem;
+use App\Models\Resources\HomeAdvisorItem;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Presenters\HomeAdviser;
+namespace App\Orchid\Presenters\Resources;
 
-use Illuminate\Support\Str;
 use Laravel\Scout\Builder;
 use Orchid\Screen\Contracts\Personable;
 use Orchid\Screen\Contracts\Searchable;

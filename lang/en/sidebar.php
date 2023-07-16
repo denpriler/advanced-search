@@ -2,9 +2,11 @@
 return [
     'labels'    => [
         'access-control' => 'Access Control',
-        'items'          => 'Items'
+        'items'          => 'Items',
+        'resources'      => 'Resources'
     ],
     'resources' => [
-        'home_advisor' => 'Home Advisor'
+        'home_advisor' => 'Home Advisor',
+        'nd'           => 'ND'
     ]
 ];

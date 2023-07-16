@@ -83,6 +83,26 @@ return [
             ]) : [],
         ],
 
+        'nd' => [
+            'driver'         => 'mysql',
+            'url'            => env('DATABASE_URL'),
+            'host'           => env('ND_HOST', '127.0.0.1'),
+            'port'           => env('ND_PORT', '3306'),
+            'database'       => env('ND_DATABASE', 'forge'),
+            'username'       => env('ND_USERNAME', 'forge'),
+            'password'       => env('ND_PASSWORD', ''),
+            'unix_socket'    => env('ND_SOCKET', ''),
+            'charset'        => 'utf8mb4',
+            'collation'      => 'utf8mb4_unicode_ci',
+            'prefix'         => '',
+            'prefix_indexes' => true,
+            'strict'         => true,
+            'engine'         => null,
+            'options'        => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'pgsql' => [
             'driver'         => 'pgsql',
             'url'            => env('DATABASE_URL'),

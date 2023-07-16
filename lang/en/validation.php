@@ -225,6 +225,8 @@ return [
         'url'                      => 'url',
         'alias'                    => 'alias',
         'category'                 => 'category',
+        'street_number'            => 'street number',
+        'unit_number'              => 'unit number',
         'approved_status'          => 'approved status'
     ],
 ];

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Orchid\Screens\HomeAdvisor;
+namespace App\Orchid\Screens\Resources;
 
-use App\Models\HomeAdvisor\HomeAdvisorItem;
+use App\Models\Resources\HomeAdvisorItem;
 use Orchid\Screen\Action;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Sight;

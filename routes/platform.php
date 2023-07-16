@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\HomeAdvisor\HomeAdvisorItemListScreen;
-use App\Orchid\Screens\HomeAdvisor\HomeAdvisorItemScreen;
+use App\Orchid\Screens\Resources\HomeAdvisorItemListScreen;
+use App\Orchid\Screens\Resources\HomeAdvisorItemScreen;
 use App\Orchid\Screens\PlatformScreen;
+use App\Orchid\Screens\Resources\NDItemListScreen;
+use App\Orchid\Screens\Resources\NDItemScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
@@ -98,4 +100,9 @@ Route::screen('roles', RoleListScreen::class)
 Route::prefix('home-advisor')->name('platform.home-advisor.')->group(function () {
     Route::screen('items', HomeAdvisorItemListScreen::class)->name('item.list');
     Route::screen('items/{item?}', HomeAdvisorItemScreen::class)->name('item.view');
+});
+
+Route::prefix('nd')->name('platform.nd.')->group(function () {
+    Route::screen('items', NDItemListScreen::class)->name('item.list');
+    Route::screen('items/{item?}', NDItemScreen::class)->name('item.view');
 });

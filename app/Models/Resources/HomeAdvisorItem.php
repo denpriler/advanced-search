@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\HomeAdvisor;
+namespace App\Models\Resources;
 
-use App\Orchid\Presenters\HomeAdviser\HomeAdviserItemPresenter;
+use App\Orchid\Presenters\Resources\HomeAdviserItemPresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\ArrayShape;
@@ -19,6 +19,9 @@ class HomeAdvisorItem extends Model
 
     protected $connection = 'home_advisor';
     protected $table = 'homeadvisor_item';
+
+    const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'updated_on';
 
     protected $fillable = [
         'name',
@@ -62,9 +65,6 @@ class HomeAdvisorItem extends Model
         'approved_status'   => 'boolean',
         'years_in_business' => 'integer'
     ];
-
-    const CREATED_AT = 'created_on';
-    const UPDATED_AT = 'updated_on';
 
     /**
      * Name of columns to which http sorting can be applied
@@ -118,7 +118,7 @@ class HomeAdvisorItem extends Model
      *
      * @return HomeAdviserItemPresenter
      */
-    public function presenter()
+    public function presenter(): HomeAdviserItemPresenter
     {
         return new HomeAdviserItemPresenter($this);
     }

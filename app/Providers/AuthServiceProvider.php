@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use App\Models\HomeAdvisor\HomeAdvisorItem;
+use App\Models\Resources\HomeAdvisorItem;
 use App\Policies\HomeAdvisor\HomeAdvisorItemPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

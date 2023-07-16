@@ -75,13 +75,15 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
-            Menu::make(__('sidebar.resources.home_advisor'))
-                ->title(__('Resources'))
+            Menu::make(__('sidebar.labels.resources'))
                 ->icon('bs.folder')
                 ->list([
-                    Menu::make(__('sidebar.labels.items'))
+                    Menu::make(__('sidebar.resources.home_advisor'))
                         ->route('platform.home-advisor.item.list')
-                        ->permission('manager.home_advisor')
+                        ->permission('manager.home_advisor'),
+                    Menu::make(__('sidebar.resources.nd'))
+                        ->route('platform.nd.item.list')
+                        ->permission('manager.nd')
                 ]),
 
             // Menu::make('Documentation')

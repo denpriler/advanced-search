@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\Resources\HomeAdvisorItem;
+use App\Models\Resources\NDItem;
+use App\Orchid\PlatformProvider;
+use Orchid\Support\BootstrapIconsPath;
+
 return [
 
     /*
@@ -203,7 +208,7 @@ return [
      */
 
     'icons' => [
-        'bs'  => \Orchid\Support\BootstrapIconsPath::getFolder(),
+        'bs'  => BootstrapIconsPath::getFolder(),
     ],
 
     /*
@@ -244,7 +249,8 @@ return [
      */
 
     'search' => [
-        \App\Models\HomeAdvisor\HomeAdvisorItem::class
+        HomeAdvisorItem::class,
+        NDItem::class
     ],
 
     /*
@@ -316,6 +322,6 @@ return [
      |
      */
 
-    'provider' => \App\Orchid\PlatformProvider::class,
+    'provider' => PlatformProvider::class,
 
 ];

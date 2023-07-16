@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Orchid\Screens\HomeAdvisor;
+namespace App\Orchid\Screens\Resources;
 
-use App\Models\HomeAdvisor\HomeAdvisorItem;
+use App\Models\Resources\HomeAdvisorItem;
 use App\Orchid\Filters\IDFilter;
 use App\Orchid\Filters\WhereLikeFilter;
-use App\Orchid\Layouts\HomeAdvisor\HomeAdvisorItemTable;
+use App\Orchid\Layouts\Resources\HomeAdvisorItemTable;
 
 //use App\View\Components\TableSearchInput;
 use App\Orchid\Layouts\ResourceFilterSelection;

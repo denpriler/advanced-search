@@ -2,7 +2,8 @@
 
 return [
     'labels'  => [
-        'home-advisor' => 'Home Advisor'
+        'home-advisor' => 'Home Advisor',
+        'nd'           => 'ND'
     ],
     'search'  => [
         'labels'  => [
@@ -16,7 +17,7 @@ return [
         ]
     ],
     'filters' => [
-        'ID' => [
+        'ID'         => [
             'title'       => 'ID',
             'placeholder' => 'Search by ID'
         ],

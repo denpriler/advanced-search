@@ -141,7 +141,7 @@ return [
     'model_locations' => [
         'vendor/orchid/platform/src/Platform/Models',
         'app/Models',
-        'app/Models/HomeAdvisor',
+        'app/Models/Resources',
     ],
 
     /*

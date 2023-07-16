@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Resources\HomeAdvisorItem;
+use App\Models\Resources\NDItem;
+
 return [
 
     /*
@@ -133,8 +136,12 @@ return [
         'host'           => env('MEILISEARCH_HOST', 'http://localhost:7700'),
         'key'            => env('MEILISEARCH_KEY'),
         'index-settings' => [
-            App\Models\HomeAdvisor\HomeAdvisorItem::class => [
+            HomeAdvisorItem::class => [
                 'filterableAttributes' => ['id', 'name', 'email', 'website'],
+                'sortableAttributes'   => ['created_on'],
+            ],
+            NDItem::class         => [
+                'filterableAttributes' => ['id', 'name', 'email', 'url'],
                 'sortableAttributes'   => ['created_on'],
             ]
         ],
