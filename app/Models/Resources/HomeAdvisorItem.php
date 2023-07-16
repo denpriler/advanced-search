@@ -108,6 +108,7 @@ class HomeAdvisorItem extends Model
             'id'       => $this->getKey(),
             'name'     => $this->name,
             'email'    => $this->email,
+            'phone'    => $this->phone,
             'website'  => $this->website,
             'location' => $this->location,
         ];

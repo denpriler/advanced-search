@@ -2,6 +2,7 @@
 
 use App\Models\Resources\HomeAdvisorItem;
 use App\Models\Resources\NDItem;
+use App\Models\Resources\YelpItem;
 
 return [
 
@@ -137,12 +138,16 @@ return [
         'key'            => env('MEILISEARCH_KEY'),
         'index-settings' => [
             HomeAdvisorItem::class => [
-                'filterableAttributes' => ['id', 'name', 'email', 'website'],
-                'sortableAttributes'   => ['created_on'],
+                'searchableAttributes' => ['id', 'name', 'email', 'website', 'phone'],
+                'filterableAttributes' => ['id', 'name', 'email', 'website', 'phone']
             ],
-            NDItem::class         => [
-                'filterableAttributes' => ['id', 'name', 'email', 'url'],
-                'sortableAttributes'   => ['created_on'],
+            NDItem::class          => [
+                'searchableAttributes' => ['id', 'name', 'email', 'url', 'phone'],
+                'filterableAttributes' => ['id', 'name', 'email', 'url', 'phone']
+            ],
+            YelpItem::class        => [
+                'searchableAttributes' => ['id', 'name', 'url', 'phone'],
+                'filterableAttributes' => ['id', 'name', 'url', 'phone']
             ]
         ],
     ],

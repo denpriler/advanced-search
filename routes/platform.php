@@ -7,6 +7,8 @@ use App\Orchid\Screens\Resources\HomeAdvisorItemScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Resources\NDItemListScreen;
 use App\Orchid\Screens\Resources\NDItemScreen;
+use App\Orchid\Screens\Resources\YelpItemListScreen;
+use App\Orchid\Screens\Resources\YelpItemScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
@@ -105,4 +107,9 @@ Route::prefix('home-advisor')->name('platform.home-advisor.')->group(function ()
 Route::prefix('nd')->name('platform.nd.')->group(function () {
     Route::screen('items', NDItemListScreen::class)->name('item.list');
     Route::screen('items/{item?}', NDItemScreen::class)->name('item.view');
+});
+
+Route::prefix('yelp')->name('platform.yelp.')->group(function () {
+    Route::screen('items', YelpItemListScreen::class)->name('item.list');
+    Route::screen('items/{item?}', YelpItemScreen::class)->name('item.view');
 });

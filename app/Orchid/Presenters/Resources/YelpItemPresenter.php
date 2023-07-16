@@ -9,14 +9,14 @@ use Orchid\Screen\Contracts\Personable;
 use Orchid\Screen\Contracts\Searchable;
 use Orchid\Support\Presenter;
 
-class HomeAdviserItemPresenter extends Presenter implements Searchable, Personable
+class YelpItemPresenter extends Presenter implements Searchable, Personable
 {
     /**
      * Returns the label for this presenter, which is used in the UI to identify it.
      */
     public function label(): string
     {
-        return 'Home Adviser Items';
+        return 'Yelp Items';
     }
 
     /**
@@ -40,7 +40,7 @@ class HomeAdviserItemPresenter extends Presenter implements Searchable, Personab
      */
     public function url(): string
     {
-        return route('platform.home-advisor.item.view', $this->entity);
+        return route('platform.yelp.item.view', $this->entity);
     }
 
     /**

@@ -32,7 +32,7 @@ class NDItemPresenter extends Presenter implements Searchable, Personable
      */
     public function subTitle(): string
     {
-        return $this->entity->phone . ', ' . $this->entity->email . ', ' . $this->entity->url;
+        return collect($this->entity->toSearchableArray())->filter(fn($v, $k) => !empty($v) && $k !== 'id')->join(' | ');
     }
 
     /**

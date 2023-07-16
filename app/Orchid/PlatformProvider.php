@@ -83,7 +83,10 @@ class PlatformProvider extends OrchidServiceProvider
                         ->permission('manager.home_advisor'),
                     Menu::make(__('sidebar.resources.nd'))
                         ->route('platform.nd.item.list')
-                        ->permission('manager.nd')
+                        ->permission('manager.nd'),
+                    Menu::make(__('sidebar.resources.yelp'))
+                        ->route('platform.yelp.item.list')
+                        ->permission('manager.yelp')
                 ]),
 
             // Menu::make('Documentation')

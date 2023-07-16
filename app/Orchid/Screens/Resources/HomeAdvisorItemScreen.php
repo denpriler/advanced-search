@@ -47,7 +47,7 @@ class HomeAdvisorItemScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return Layout[]|string[]
+     * @return iterable
      */
     public function layout(): iterable
     {

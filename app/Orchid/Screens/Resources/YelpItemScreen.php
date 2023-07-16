@@ -2,13 +2,13 @@
 
 namespace App\Orchid\Screens\Resources;
 
-use App\Models\Resources\NDItem;
+use App\Models\Resources\YelpItem;
 use Orchid\Screen\Action;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Sight;
 use Orchid\Screen\Screen;
 
-class NDItemScreen extends Screen
+class YelpItemScreen extends Screen
 {
     public $item;
 
@@ -17,7 +17,7 @@ class NDItemScreen extends Screen
      *
      * @return array
      */
-    public function query(NDItem $item): iterable
+    public function query(YelpItem $item): iterable
     {
         return [
             'item' => $item
@@ -57,19 +57,19 @@ class NDItemScreen extends Screen
                     Sight::make('name', ucfirst(__('validation.attributes.name'))),
                     Sight::make('url', ucfirst(__('validation.attributes.website'))),
                     Sight::make(
-                        'nd_url',
-                        __('resources.labels.nd') . ' ' . ucfirst(__('validation.attributes.url'))
+                        'yelp_url',
+                        __('resources.labels.yelp') . ' ' . ucfirst(__('validation.attributes.url'))
                     ),
                     Sight::make('phone', ucfirst(__('validation.attributes.phone'))),
-                    Sight::make('email', ucfirst(__('validation.attributes.email'))),
                     Sight::make('country', ucfirst(__('validation.attributes.country'))),
                     Sight::make('address', ucfirst(__('validation.attributes.address'))),
                     Sight::make('city', ucfirst(__('validation.attributes.city'))),
                     Sight::make('state_region', ucfirst(__('validation.attributes.state'))),
-                    Sight::make('streetnumber', ucfirst(__('validation.attributes.street_number'))),
-                    Sight::make('unitnumber', ucfirst(__('validation.attributes.unit_number'))),
                     Sight::make('zip', ucfirst(__('validation.attributes.postal_code'))),
+                    Sight::make('reviewscount', ucfirst(__('validation.attributes.reviews_qty'))),
                     Sight::make('bizid', strtoupper('biz id')),
+                    Sight::make('category', ucfirst(__('validation.attributes.category')))
+                        ->render(fn($entity) => view('legends.list', ['list' => preg_split("/\|/", $entity->category)])),
                     Sight::make('alias', ucfirst(__('validation.attributes.alias')))
                 ]
             ),

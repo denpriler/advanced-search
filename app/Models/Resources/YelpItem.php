@@ -2,7 +2,7 @@
 
 namespace App\Models\Resources;
 
-use App\Orchid\Presenters\Resources\NDItemPresenter;
+use App\Orchid\Presenters\Resources\YelpItemPresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -12,31 +12,30 @@ use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Screen\AsSource;
 
-class NDItem extends Model
+class YelpItem extends Model
 {
     use AsSource, Filterable, Attachable, Searchable;
 
-    protected $connection = 'nd';
-    protected $table = 'nd_item';
+    protected $connection = 'yelp';
+    protected $table = 'yelp_item';
 
     const CREATED_AT = 'created_on';
     const UPDATED_AT = 'updated_on';
 
     protected $fillable = [
         'name',
+        'rating',
+        'reviewscount',
         'url',
-        'nd_url',
+        'yelp_url',
         'phone',
-        'email',
         'address',
-        'streetnumber',
-        'unitnumber',
         'city',
         'state_region',
         'zip',
         'country',
-        'route',
         'alias',
+        'category',
         'bizid'
     ];
 
@@ -46,9 +45,16 @@ class NDItem extends Model
     protected function location(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->country . ', ' . $this->state_region . ', ' . $this->city . ', ' . $this->address . ', ' . $this->zip
+            get: fn() => collect([$this->country, $this->state_region, $this->city, $this->address, $this->zip])
+                ->filter(fn($v) => !empty($v))
+                ->join(', ')
         );
     }
+
+    protected $casts = [
+        'rating'       => 'double',
+        'reviewscount' => 'integer'
+    ];
 
     /**
      * Name of columns to which http sorting can be applied
@@ -58,7 +64,6 @@ class NDItem extends Model
     protected $allowedSorts = [
         'name',
         'phone',
-        'email',
         'url'
     ];
 
@@ -69,7 +74,6 @@ class NDItem extends Model
         'id'    => Where::class,
         'name'  => Like::class,
         'phone' => Like::class,
-        'email' => Like::class,
         'url'   => Like::class,
     ];
 
@@ -78,7 +82,7 @@ class NDItem extends Model
      */
     public function searchableAs(): string
     {
-        return 'nd_item_index';
+        return 'yelp_item_index';
     }
 
     /**
@@ -91,8 +95,8 @@ class NDItem extends Model
         return [
             'id'       => $this->getKey(),
             'name'     => $this->name,
-            'phome'    => $this->phone,
             'url'      => $this->url,
+            'phone'    => $this->phone,
             'location' => $this->location,
         ];
     }
@@ -100,10 +104,10 @@ class NDItem extends Model
     /**
      * Get the presenter for the model.
      *
-     * @return NDItemPresenter
+     * @return YelpItemPresenter
      */
-    public function presenter(): NDItemPresenter
+    public function presenter(): YelpItemPresenter
     {
-        return new NDItemPresenter($this);
+        return new YelpItemPresenter($this);
     }
 }

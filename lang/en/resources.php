@@ -3,7 +3,8 @@
 return [
     'labels'  => [
         'home-advisor' => 'Home Advisor',
-        'nd'           => 'ND'
+        'nd'           => 'ND',
+        'yelp'         => 'Yelp'
     ],
     'search'  => [
         'labels'  => [

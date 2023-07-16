@@ -7,6 +7,7 @@ return [
     ],
     'resources' => [
         'home_advisor' => 'Home Advisor',
-        'nd'           => 'ND'
+        'nd'           => 'ND',
+        'yelp'         => 'Yelp'
     ]
 ];

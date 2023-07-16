@@ -2,6 +2,7 @@
 
 use App\Models\Resources\HomeAdvisorItem;
 use App\Models\Resources\NDItem;
+use App\Models\Resources\YelpItem;
 use App\Orchid\PlatformProvider;
 use Orchid\Support\BootstrapIconsPath;
 
@@ -250,7 +251,8 @@ return [
 
     'search' => [
         HomeAdvisorItem::class,
-        NDItem::class
+        NDItem::class,
+        YelpItem::class
     ],
 
     /*
