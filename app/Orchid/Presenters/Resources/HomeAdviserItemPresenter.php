@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Presenters\Resources;
 
+use App\Models\Resources\HomeAdvisorItem;
 use Laravel\Scout\Builder;
 use Orchid\Screen\Contracts\Personable;
 use Orchid\Screen\Contracts\Searchable;
@@ -40,7 +41,7 @@ class HomeAdviserItemPresenter extends Presenter implements Searchable, Personab
      */
     public function url(): string
     {
-        return route('platform.home-advisor.item.view', $this->entity);
+        return route('platform.' . HomeAdvisorItem::slug() . '.item.view', $this->entity);
     }
 
     /**

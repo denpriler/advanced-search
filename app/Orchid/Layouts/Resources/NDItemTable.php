@@ -31,7 +31,7 @@ class NDItemTable extends Table
             TD::make('name', ucfirst(__('validation.attributes.name')))
                 ->render(function (NDItem $item) {
                     return Link::make($item->name)
-                        ->route('platform.nd.item.view', $item);
+                        ->route('platform.' . NDItem::slug() . '.item.view', $item);
                 })
                 ->sort(),
             TD::make('email', ucfirst(__('validation.attributes.email')))

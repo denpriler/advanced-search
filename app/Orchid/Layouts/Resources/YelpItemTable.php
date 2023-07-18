@@ -31,7 +31,7 @@ class YelpItemTable extends Table
             TD::make('name', ucfirst(__('validation.attributes.name')))
                 ->render(function (YelpItem $item) {
                     return Link::make($item->name)
-                        ->route('platform.yelp.item.view', $item);
+                        ->route('platform.' . YelpItem::slug() . '.item.view', $item);
                 })
                 ->sort(),
             TD::make('phone', ucfirst(__('validation.attributes.phone')))

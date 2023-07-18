@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Resources\HomeAdvisorItem;
+use App\Models\Resources\NDItem;
+use App\Models\Resources\YelpItem;
 use Illuminate\Database\Seeder;
 use Orchid\Platform\Models\Role;
 
@@ -20,9 +23,9 @@ class RoleSeeder extends Seeder
                 'name'        => __('permissions.roles.main-manager'),
                 'slug'        => 'main-manager',
                 'permissions' => [
-                    'manager.home_advisor' => 1,
-                    'manager.nd'           => 1,
-                    'manager.yelp'         => 1
+                    'manager.' . HomeAdvisorItem::slug() => 1,
+                    'manager.' . NDItem::slug()          => 1,
+                    'manager.' . YelpItem::slug()        => 1
                 ]
             ]
         );
@@ -34,7 +37,7 @@ class RoleSeeder extends Seeder
                 'name'        => __('permissions.roles.home-advisor-manager'),
                 'slug'        => 'home-advisor-manager',
                 'permissions' => [
-                    'manager.home_advisor' => 1
+                    'manager.' . HomeAdvisorItem::slug() => 1
                 ]
             ]
         );
@@ -46,7 +49,7 @@ class RoleSeeder extends Seeder
                 'name'        => __('permissions.roles.nd-manager'),
                 'slug'        => 'nd-manager',
                 'permissions' => [
-                    'manager.nd' => 1
+                    'manager.' . NDItem::slug() => 1
                 ]
             ]
         );
@@ -58,7 +61,7 @@ class RoleSeeder extends Seeder
                 'name'        => __('permissions.roles.yelp-manager'),
                 'slug'        => 'yelp-manager',
                 'permissions' => [
-                    'manager.yelp' => 1
+                    'manager.' . YelpItem::slug() => 1
                 ]
             ]
         );

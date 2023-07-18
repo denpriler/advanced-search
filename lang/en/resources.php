@@ -1,10 +1,14 @@
 <?php
 
+use App\Models\Resources\HomeAdvisorItem;
+use App\Models\Resources\NDItem;
+use App\Models\Resources\YelpItem;
+
 return [
     'labels'  => [
-        'home-advisor' => 'Home Advisor',
-        'nd'           => 'ND',
-        'yelp'         => 'Yelp'
+        HomeAdvisorItem::slug() => 'Home Advisor',
+        NDItem::slug()          => 'ND',
+        YelpItem::slug()        => 'Yelp'
     ],
     'search'  => [
         'labels'  => [

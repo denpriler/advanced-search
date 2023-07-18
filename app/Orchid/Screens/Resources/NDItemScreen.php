@@ -58,7 +58,7 @@ class NDItemScreen extends Screen
                     Sight::make('url', ucfirst(__('validation.attributes.website'))),
                     Sight::make(
                         'nd_url',
-                        __('resources.labels.nd') . ' ' . ucfirst(__('validation.attributes.url'))
+                        __('resources.labels.n-d') . ' ' . ucfirst(__('validation.attributes.url'))
                     ),
                     Sight::make('phone', ucfirst(__('validation.attributes.phone'))),
                     Sight::make('email', ucfirst(__('validation.attributes.email'))),

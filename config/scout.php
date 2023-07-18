@@ -138,16 +138,16 @@ return [
         'key'            => env('MEILISEARCH_KEY'),
         'index-settings' => [
             HomeAdvisorItem::class => [
-                'searchableAttributes' => ['id', 'name', 'email', 'website', 'phone'],
-                'filterableAttributes' => ['id', 'name', 'email', 'website', 'phone']
+                'searchableAttributes' => HomeAdvisorItem::SCOUT_SEARCHABLE_ATTRIBUTES,
+                'filterableAttributes' => HomeAdvisorItem::SCOUT_SEARCHABLE_ATTRIBUTES,
             ],
             NDItem::class          => [
-                'searchableAttributes' => ['id', 'name', 'email', 'url', 'phone'],
-                'filterableAttributes' => ['id', 'name', 'email', 'url', 'phone']
+                'searchableAttributes' => NDItem::SCOUT_SEARCHABLE_ATTRIBUTES,
+                'filterableAttributes' => NDItem::SCOUT_SEARCHABLE_ATTRIBUTES
             ],
             YelpItem::class        => [
-                'searchableAttributes' => ['id', 'name', 'url', 'phone'],
-                'filterableAttributes' => ['id', 'name', 'url', 'phone']
+                'searchableAttributes' => YelpItem::SCOUT_SEARCHABLE_ATTRIBUTES,
+                'filterableAttributes' => YelpItem::SCOUT_SEARCHABLE_ATTRIBUTES,
             ]
         ],
     ],

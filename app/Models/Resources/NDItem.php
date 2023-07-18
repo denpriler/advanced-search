@@ -5,6 +5,7 @@ namespace App\Models\Resources;
 use App\Orchid\Presenters\Resources\NDItemPresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
@@ -40,6 +41,31 @@ class NDItem extends Model
         'bizid'
     ];
 
+    public const SCOUT_SEARCHABLE_ATTRIBUTES = [
+        'name',
+        'url',
+        'nd_url',
+        'phone',
+        'email',
+        'address',
+        'streetnumber',
+        'unitnumber',
+        'city',
+        'state_region',
+        'zip',
+        'country',
+        'route',
+        'alias',
+        'bizid'
+    ];
+
+    public const TABLE_COLUMNS = [
+        'name',
+        'phone',
+        'email',
+        'url'
+    ];
+
     /**
      * Get location.
      */
@@ -73,12 +99,17 @@ class NDItem extends Model
         'url'   => Like::class,
     ];
 
+    public static function slug(): string
+    {
+        return \Str::snake(str_replace('Item', '', class_basename(NDItem::class)));
+    }
+
     /**
      * Get the name of the index associated with the model.
      */
     public function searchableAs(): string
     {
-        return 'nd_item_index';
+        return Str::snake(class_basename(NDItem::class)) . '_index';
     }
 
     /**
@@ -88,13 +119,7 @@ class NDItem extends Model
      */
     public function toSearchableArray(): array
     {
-        return [
-            'id'       => $this->getKey(),
-            'name'     => $this->name,
-            'phome'    => $this->phone,
-            'url'      => $this->url,
-            'location' => $this->location,
-        ];
+        return $this->toArray();
     }
 
     /**

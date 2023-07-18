@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Presenters\Resources;
 
+use App\Models\Resources\YelpItem;
 use Laravel\Scout\Builder;
 use Orchid\Screen\Contracts\Personable;
 use Orchid\Screen\Contracts\Searchable;
@@ -40,7 +41,7 @@ class YelpItemPresenter extends Presenter implements Searchable, Personable
      */
     public function url(): string
     {
-        return route('platform.yelp.item.view', $this->entity);
+        return route('platform.' . YelpItem::slug() . '.item.view', $this->entity);
     }
 
     /**

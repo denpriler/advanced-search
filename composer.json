@@ -18,7 +18,10 @@
         "meilisearch/meilisearch-php": "^1.2",
         "orchid/crud": "^4.0",
         "orchid/platform": "^14.6",
-        "rap2hpoutre/laravel-log-viewer": "^2.3"
+        "rap2hpoutre/laravel-log-viewer": "^2.3",
+        "yajra/laravel-datatables": "^10.0",
+        "yajra/laravel-datatables-html": "^10.7",
+        "yajra/laravel-datatables-oracle": "^10.3.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

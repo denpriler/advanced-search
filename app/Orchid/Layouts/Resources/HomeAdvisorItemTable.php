@@ -31,7 +31,7 @@ class HomeAdvisorItemTable extends Table
             TD::make('name', ucfirst(__('validation.attributes.name')))
                 ->render(function (HomeAdvisorItem $item) {
                     return Link::make($item->name)
-                        ->route('platform.home-advisor.item.view', $item);
+                        ->route('platform.' . HomeAdvisorItem::slug() . '.item.view', $item);
                 })
                 ->sort(),
             TD::make('email', ucfirst(__('validation.attributes.email')))

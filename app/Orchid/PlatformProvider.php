@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
+use App\Models\Resources\HomeAdvisorItem;
+use App\Models\Resources\NDItem;
+use App\Models\Resources\YelpItem;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
@@ -23,7 +26,8 @@ class PlatformProvider extends OrchidServiceProvider
     {
         parent::boot($dashboard);
 
-        // ...
+//        $dashboard->registerResource('stylesheet', \Vite::asset('resources/sass/app.scss'));
+//        $dashboard->registerResource('script', \Vite::asset('resources/js/app.js'));
     }
 
     /**
@@ -77,17 +81,23 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('sidebar.labels.resources'))
                 ->icon('bs.folder')
+                ->divider()
                 ->list([
-                    Menu::make(__('sidebar.resources.home_advisor'))
-                        ->route('platform.home-advisor.item.list')
-                        ->permission('manager.home_advisor'),
-                    Menu::make(__('sidebar.resources.nd'))
-                        ->route('platform.nd.item.list')
-                        ->permission('manager.nd'),
-                    Menu::make(__('sidebar.resources.yelp'))
-                        ->route('platform.yelp.item.list')
-                        ->permission('manager.yelp')
+                    Menu::make(__('sidebar.resources.' . HomeAdvisorItem::slug()))
+                        ->route('platform.' . HomeAdvisorItem::slug() . '.item.list')
+                        ->permission('manager.' . HomeAdvisorItem::slug()),
+                    Menu::make(__('sidebar.resources.' . NDItem::slug()))
+                        ->route('platform.' . NDItem::slug() . '.item.list')
+                        ->permission('manager.' . NDItem::slug()),
+                    Menu::make(__('sidebar.resources.' . YelpItem::slug()))
+                        ->route('platform.' . YelpItem::slug() . '.item.list')
+                        ->permission('manager.' . YelpItem::slug())
                 ]),
+
+            Menu::make(__('sidebar.labels.advanced-search'))
+                ->icon('bs.search')
+                ->route('platform.advanced-search')
+                ->permission('manager.*')
 
             // Menu::make('Documentation')
             //     ->title('Docs')
@@ -115,9 +125,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
             ItemPermission::group(__('permissions.groups.manager'))
-                ->addPermission('manager.home_advisor', __('permissions.permissions.manager.home_advisor'))
-                ->addPermission('manager.nd', __('permissions.permissions.manager.nd'))
-                ->addPermission('manager.yelp', __('permissions.permissions.manager.yelp'))
+                ->addPermission('manager.' . HomeAdvisorItem::slug(), __('permissions.permissions.manager.home_advisor'))
+                ->addPermission('manager.' . NDItem::slug(), __('permissions.permissions.manager.nd'))
+                ->addPermission('manager.' . YelpItem::slug(), __('permissions.permissions.manager.yelp'))
         ];
     }
 }

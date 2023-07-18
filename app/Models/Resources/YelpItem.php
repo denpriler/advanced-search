@@ -5,6 +5,7 @@ namespace App\Models\Resources;
 use App\Orchid\Presenters\Resources\YelpItemPresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
@@ -37,6 +38,29 @@ class YelpItem extends Model
         'alias',
         'category',
         'bizid'
+    ];
+
+    public const SCOUT_SEARCHABLE_ATTRIBUTES = [
+        'name',
+        'rating',
+        'reviewscount',
+        'url',
+        'yelp_url',
+        'phone',
+        'address',
+        'city',
+        'state_region',
+        'zip',
+        'country',
+        'alias',
+        'category',
+        'bizid'
+    ];
+
+    public const TABLE_COLUMNS = [
+        'name',
+        'phone',
+        'url'
     ];
 
     /**
@@ -77,12 +101,17 @@ class YelpItem extends Model
         'url'   => Like::class,
     ];
 
+    public static function slug(): string
+    {
+        return \Str::snake(str_replace('Item', '', class_basename(YelpItem::class)));
+    }
+
     /**
      * Get the name of the index associated with the model.
      */
     public function searchableAs(): string
     {
-        return 'yelp_item_index';
+        return Str::snake(class_basename(YelpItem::class)) . '_index';
     }
 
     /**
@@ -92,13 +121,7 @@ class YelpItem extends Model
      */
     public function toSearchableArray(): array
     {
-        return [
-            'id'       => $this->getKey(),
-            'name'     => $this->name,
-            'url'      => $this->url,
-            'phone'    => $this->phone,
-            'location' => $this->location,
-        ];
+        return $this->toArray();
     }
 
     /**

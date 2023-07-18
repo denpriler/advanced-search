@@ -48,7 +48,7 @@ class NDItemListScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('resources.labels.nd');
+        return __('resources.labels.n-d');
     }
 
     /**
