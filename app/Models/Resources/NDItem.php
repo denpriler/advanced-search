@@ -109,7 +109,7 @@ class NDItem extends Model
      */
     public function searchableAs(): string
     {
-        return Str::snake(class_basename(NDItem::class)) . '_index';
+        return self::slug() . '_index';
     }
 
     /**

@@ -11,7 +11,7 @@
                 serverSide: true,
                 searching: false,
                 ajax: {
-                    url: "{{ route('platform.advanced-search.query', ['model' => class_basename($model)]) }}?" + urlParams.toString(),
+                    url: "{{ route('platform.advanced-search.query', ['model' => $model]) }}?" + urlParams.toString(),
                     type: 'GET',
                     dataFilter: function (data) {
                         let json = jQuery.parseJSON(data);

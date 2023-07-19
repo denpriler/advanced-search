@@ -111,7 +111,7 @@ class YelpItem extends Model
      */
     public function searchableAs(): string
     {
-        return Str::snake(class_basename(YelpItem::class)) . '_index';
+        return self::slug() . '_index';
     }
 
     /**

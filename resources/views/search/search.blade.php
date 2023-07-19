@@ -9,7 +9,35 @@
                 @lang('advanced-search.labels.query')
                 <br>
                 <span class="text-secondary">@lang('advanced-search.labels.query-sub')</span>
+                <br>
+                <span
+                    class="text-secondary">@lang('advanced-search.labels.example', ['example' => "tri-colour rat terrier"])</span>
+                <br>
+                <span
+                    class="text-secondary">@lang('advanced-search.labels.example', ['example' => "\"rat terrier\""])</span>
                 <input class="form-control mw-100" name="all_words" value="{{ request()->query('all_words') }}">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="any_words" class="form-label">
+                @lang('advanced-search.labels.any-words-query')
+                <br>
+                <span class="text-secondary">@lang('advanced-search.labels.any-words-query-sub')</span>
+                <br>
+                <span
+                    class="text-secondary">@lang('advanced-search.labels.example', ['example' => "miniature OR standard"])</span>
+                <input class="form-control mw-100" name="any_words" value="{{ request()->query('any_words') }}">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="none_words" class="form-label">
+                @lang('advanced-search.labels.none-words-query')
+                <br>
+                <span class="text-secondary">@lang('advanced-search.labels.none-words-query-sub')</span>
+                <br>
+                <span
+                    class="text-secondary">@lang('advanced-search.labels.example', ['example' => "-rodent, -\"Jack Russell\""])</span>
+                <input class="form-control mw-100" name="none_words" value="{{ request()->query('none_words') }}">
             </label>
         </div>
         <div class="form-group d-flex flex-row justify-content-end">

@@ -58,7 +58,7 @@ class HomeAdvisorItemScreen extends Screen
                     Sight::make('website', ucfirst(__('validation.attributes.website'))),
                     Sight::make(
                         'homeadvisor_url',
-                        __('resources.labels.home-advisor') . ' ' . ucfirst(__('validation.attributes.url'))
+                        __('resources.labels.' . HomeAdvisorItem::slug()) . ' ' . ucfirst(__('validation.attributes.url'))
                     ),
                     Sight::make('phone', ucfirst(__('validation.attributes.phone'))),
                     Sight::make('email', ucfirst(__('validation.attributes.email'))),

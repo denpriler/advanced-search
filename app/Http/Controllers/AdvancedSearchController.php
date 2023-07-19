@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\AdvancedSearch;
-use App\Models\Resources\HomeAdvisorItem;
-use Illuminate\Http\JsonResponse;
+use App\Http\Services\AdvancedSearch\AdvancedSearch;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Orchid\Screen\Builder;
-use Orchid\Screen\Fields\Input;
 
 class AdvancedSearchController extends Controller
 {
@@ -24,14 +20,29 @@ class AdvancedSearchController extends Controller
      */
     public function query(string $model, Request $request): string
     {
-        $query = $request->query('all_words');
+        $this->search->setModel($model);
+
+        $query = $request->query('all_words', '');
+        $anyWordsQuery = $request->query('any_words', false);
+        $noneWordsQuery = $request->query('none_words', false);
+
         $perPage = $request->query('length', 10);
         $page = ($request->query('start') / $perPage) + 1;
 
-        $paginate = $query
-            ? $this->search->query($model, $query, $page, $perPage)
-            : $this->search->paginate($model, $page, $perPage);
-        return $paginate->toJson();
+        if ($anyWordsQuery && strlen($anyWordsQuery)) {
+            $this->search->pushAnyWordsQuery($anyWordsQuery);
+        }
+
+        if ($noneWordsQuery && strlen($noneWordsQuery)) {
+            $this->search->pushNoneWordsQuery($noneWordsQuery);
+        }
+
+        try {
+            return $this->search->query($query, $page, $perPage)->toJson();
+        } catch (\Exception $e) {
+            \Debugbar::addThrowable($e);
+            return (new LengthAwarePaginator([], 0, $page))->toJson();
+        }
     }
 
     /**

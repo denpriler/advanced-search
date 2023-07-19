@@ -58,7 +58,7 @@ class YelpItemScreen extends Screen
                     Sight::make('url', ucfirst(__('validation.attributes.website'))),
                     Sight::make(
                         'yelp_url',
-                        __('resources.labels.yelp') . ' ' . ucfirst(__('validation.attributes.url'))
+                        __('resources.labels.' . YelpItem::slug()) . ' ' . ucfirst(__('validation.attributes.url'))
                     ),
                     Sight::make('phone', ucfirst(__('validation.attributes.phone'))),
                     Sight::make('country', ucfirst(__('validation.attributes.country'))),

@@ -33,8 +33,10 @@ use Tabuna\Breadcrumbs\Trail;
 */
 
 // Main
-Route::screen('/main', PlatformScreen::class)
-    ->name('platform.main');
+//Route::screen('/main', PlatformScreen::class)
+//    ->name('platform.main');
+
+Route::redirect('/main', '/advanced-search')->name('platform.main');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)

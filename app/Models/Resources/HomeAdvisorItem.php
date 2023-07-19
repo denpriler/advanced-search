@@ -133,7 +133,7 @@ class HomeAdvisorItem extends Model
      */
     public function searchableAs(): string
     {
-        return Str::snake(class_basename(HomeAdvisorItem::class)) . '_index';
+        return self::slug() . '_index';
     }
 
     /**
