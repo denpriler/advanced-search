@@ -79,9 +79,15 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
+            Menu::make(__('sidebar.labels.parsers'))
+                ->icon('bs.modem')
+                ->route('platform.parser.list')
+                ->permission('manager.parsers'),
+
             Menu::make(__('sidebar.labels.resources'))
                 ->icon('bs.folder')
                 ->divider()
+                ->permission('manager.*')
                 ->list([
                     Menu::make(__('sidebar.resources.' . HomeAdvisorItem::slug()))
                         ->route('platform.' . HomeAdvisorItem::slug() . '.item.list')
@@ -128,6 +134,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('manager.' . HomeAdvisorItem::slug(), __('permissions.permissions.manager.home_advisor'))
                 ->addPermission('manager.' . NDItem::slug(), __('permissions.permissions.manager.nd'))
                 ->addPermission('manager.' . YelpItem::slug(), __('permissions.permissions.manager.yelp'))
+                ->addPermission('manager.parsers', __('permissions.permissions.manager.parsers'))
         ];
     }
 }

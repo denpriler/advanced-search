@@ -5,12 +5,12 @@ use App\Models\Resources\NDItem;
 use App\Models\Resources\YelpItem;
 
 return [
-    'labels'  => [
+    'labels'      => [
         HomeAdvisorItem::slug() => 'Home Advisor',
         NDItem::slug()          => 'ND',
         YelpItem::slug()        => 'Yelp'
     ],
-    'search'  => [
+    'search'      => [
         'labels'  => [
             'full-text-search' => 'Full Text Search'
         ],
@@ -21,7 +21,7 @@ return [
             'search' => 'Search'
         ]
     ],
-    'filters' => [
+    'filters'     => [
         'ID'         => [
             'title'       => 'ID',
             'placeholder' => 'Search by ID'
@@ -29,5 +29,8 @@ return [
         'where-like' => [
             'placeholder' => 'Search by :parameter'
         ]
+    ],
+    'description' => [
+        'history' => 'History of :count last records.'
     ]
 ];

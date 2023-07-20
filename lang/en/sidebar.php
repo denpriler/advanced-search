@@ -9,7 +9,8 @@ return [
         'access-control'  => 'Access Control',
         'advanced-search' => 'Advanced Search',
         'items'           => 'Items',
-        'resources'       => 'Resources'
+        'resources'       => 'Resources',
+        'parsers'         => 'Parsers'
     ],
     'resources' => [
         HomeAdvisorItem::slug() => 'Home Advisor',

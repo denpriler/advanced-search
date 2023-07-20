@@ -6,6 +6,8 @@ use App\Http\Controllers\AdvancedSearchController;
 use App\Models\Resources\HomeAdvisorItem;
 use App\Models\Resources\NDItem;
 use App\Models\Resources\YelpItem;
+use App\Orchid\Screens\ParserHistoryScreen;
+use App\Orchid\Screens\ParserListScreen;
 use App\Orchid\Screens\Resources\HomeAdvisorItemListScreen;
 use App\Orchid\Screens\Resources\HomeAdvisorItemScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -104,6 +106,12 @@ Route::screen('roles', RoleListScreen::class)
 //Route::screen('/cards/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
+
+Route::prefix('parser')->name('platform.parser.')->group(function () {
+    Route::screen('list', ParserListScreen::class)->name('list');
+    Route::screen('{parser}/history', ParserHistoryScreen::class)->name('history');
+});
+Route::screen('parsers', ParserListScreen::class)->name('platform.parsers');
 
 Route::prefix(HomeAdvisorItem::slug())->name('platform.' . HomeAdvisorItem::slug() . '.')->group(function () {
     Route::screen('items', HomeAdvisorItemListScreen::class)->name('item.list');

@@ -227,6 +227,9 @@ return [
         'category'                 => 'category',
         'street_number'            => 'street number',
         'unit_number'              => 'unit number',
-        'approved_status'          => 'approved status'
+        'approved_status'          => 'approved status',
+        'status'                   => 'status',
+        'reason'                   => 'reason',
+        'proxies'                  => 'proxies'
     ],
 ];

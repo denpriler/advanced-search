@@ -65,5 +65,17 @@ class RoleSeeder extends Seeder
                 ]
             ]
         );
+        Role::updateOrCreate(
+            [
+                'slug' => 'parser-manager'
+            ],
+            [
+                'name'        => __('permissions.roles.parser-manager'),
+                'slug'        => 'parser-manager',
+                'permissions' => [
+                    'manager.parsers' => 1
+                ]
+            ]
+        );
     }
 }
