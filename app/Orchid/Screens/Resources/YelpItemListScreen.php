@@ -47,7 +47,7 @@ class YelpItemListScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('resources.labels.yelp');
+        return __('resources.labels.' . YelpItem::slug());
     }
 
     /**

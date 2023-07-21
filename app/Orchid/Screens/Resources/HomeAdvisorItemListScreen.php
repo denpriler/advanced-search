@@ -48,7 +48,7 @@ class HomeAdvisorItemListScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('resources.labels.home-advisor');
+        return __('resources.labels.' . HomeAdvisorItem::slug());
     }
 
     /**
