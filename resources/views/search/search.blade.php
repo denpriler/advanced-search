@@ -2,8 +2,13 @@
 
 @section('title', __('advanced-search.title'))
 
+@push('head')
+    <meta name="turbo-cache-control" content="no-cache">
+@endpush
+
 @section('content')
-    <form data-turbo="false" action="{{ route('platform.advanced-search') }}" method="GET">
+    <form action="{{ route('platform.advanced-search') }}" method="GET">
+        <input type="hidden" name="_state" id="screen-state" value="">
         <div class="form-group">
             <label for="all_words" class="form-label">
                 @lang('advanced-search.labels.query')
