@@ -17,6 +17,7 @@ use App\Orchid\Screens\Resources\YelpItemListScreen;
 use App\Orchid\Screens\Resources\YelpItemScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
+use App\Orchid\Screens\SearchScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
@@ -128,7 +129,7 @@ Route::prefix(YelpItem::slug())->name('platform.' . YelpItem::slug() . '.')->gro
     Route::screen('items/{item?}', YelpItemScreen::class)->name('item.view');
 });
 
-//Route::any('search/{query}/{method?}', fn($query) => redirect()->route('platform.advanced-search', [$query]));
+Route::screen('search/{query}', SearchScreen::class)->name('platform.search');
 
 Route::prefix('advanced-search')->group(function () {
     Route::get('query/{model}', [AdvancedSearchController::class, 'query'])->name('platform.advanced-search.query');
