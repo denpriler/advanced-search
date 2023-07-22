@@ -26,7 +26,7 @@
                 createdRow: function (row, data, dataIndex) {
                     const title = $(row).children()[0];
                     $(title).html(
-                        "<a data-turbo='false' class='btn btn-link' href='{{ route('platform.' . $model::slug() . '.item.view') }}/"
+                        "<a data-turbo=\"false\" data-turbo='false' class='btn btn-link' href='{{ route('platform.' . $model::slug() . '.item.view') }}/"
                         + table.row(dataIndex).data().id
                         + "'>"
                         + $(title).text() + " </a>"
