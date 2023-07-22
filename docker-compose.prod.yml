@@ -67,6 +67,7 @@ services:
 #            - advanced_search
     redis:
         image: 'redis:alpine'
+        command: redis-server --appendonly yes --replica-read-only no
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
