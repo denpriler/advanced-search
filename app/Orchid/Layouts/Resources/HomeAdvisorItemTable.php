@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Resources;
 
 use App\Models\Resources\HomeAdvisorItem;
+use Carbon\Carbon;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -39,6 +40,9 @@ class HomeAdvisorItemTable extends Table
             TD::make('phone', ucfirst(__('validation.attributes.phone')))
                 ->sort(),
             TD::make('website', ucfirst(__('validation.attributes.website')))
+                ->sort(),
+            TD::make(HomeAdvisorItem::CREATED_AT, ucfirst(__('validation.attributes.updated_at')))
+                ->render(fn(HomeAdvisorItem $item) => Carbon::make($item->getAttribute($item->getCreatedAtColumn()))->toDateTimeString())
                 ->sort()
         ];
     }

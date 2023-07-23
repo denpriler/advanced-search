@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Resources;
 
 use App\Models\Resources\NDItem;
+use App\Orchid\Filters\DateIntervalFilter;
 use App\Orchid\Filters\IDFilter;
 use App\Orchid\Filters\WhereLikeFilter;
 
@@ -25,7 +26,8 @@ class NDItemListScreen extends Screen
             new WhereLikeFilter('name'),
             new WhereLikeFilter('phone'),
             new WhereLikeFilter('email'),
-            new WhereLikeFilter('url')
+            new WhereLikeFilter('url'),
+            new DateIntervalFilter(NDItem::CREATED_AT)
         ];
     }
 

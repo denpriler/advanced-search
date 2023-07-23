@@ -11,6 +11,7 @@ use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
+use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Screen\AsSource;
 
 class YelpItem extends Model
@@ -60,7 +61,8 @@ class YelpItem extends Model
     public const TABLE_COLUMNS = [
         'name',
         'phone',
-        'url'
+        'url',
+        self::CREATED_AT
     ];
 
     /**
@@ -88,17 +90,19 @@ class YelpItem extends Model
     protected $allowedSorts = [
         'name',
         'phone',
-        'url'
+        'url',
+        self::CREATED_AT
     ];
 
     /**
      * Name of columns to which http filtering can be applied
      */
     protected $allowedFilters = [
-        'id'    => Where::class,
-        'name'  => Like::class,
-        'phone' => Like::class,
-        'url'   => Like::class,
+        'id'             => Where::class,
+        'name'           => Like::class,
+        'phone'          => Like::class,
+        'url'            => Like::class,
+        self::CREATED_AT => WhereDateStartEnd::class
     ];
 
     public static function slug(): string

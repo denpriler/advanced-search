@@ -3,12 +3,14 @@
 namespace App\Orchid\Screens\Resources;
 
 use App\Models\Resources\HomeAdvisorItem;
+use App\Orchid\Filters\DateIntervalFilter;
 use App\Orchid\Filters\IDFilter;
 use App\Orchid\Filters\WhereLikeFilter;
 use App\Orchid\Layouts\Resources\HomeAdvisorItemTable;
 
 //use App\View\Components\TableSearchInput;
 use App\Orchid\Layouts\ResourceFilterSelection;
+use JetBrains\PhpStorm\Pure;
 use Orchid\Screen\Action;
 use Orchid\Screen\Screen;
 
@@ -25,7 +27,8 @@ class HomeAdvisorItemListScreen extends Screen
             new WhereLikeFilter('name'),
             new WhereLikeFilter('phone'),
             new WhereLikeFilter('email'),
-            new WhereLikeFilter('website')
+            new WhereLikeFilter('website'),
+            new DateIntervalFilter(HomeAdvisorItem::CREATED_AT)
         ];
     }
 
@@ -66,7 +69,7 @@ class HomeAdvisorItemListScreen extends Screen
      *
      * @return iterable
      */
-    public function layout(): iterable
+    #[Pure] public function layout(): iterable
     {
         return [
             new ResourceFilterSelection($this->filters),

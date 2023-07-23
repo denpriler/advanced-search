@@ -22,12 +22,18 @@ return [
         ]
     ],
     'filters'     => [
-        'ID'         => [
+        'ID'            => [
             'title'       => 'ID',
             'placeholder' => 'Search by ID'
         ],
-        'where-like' => [
+        'where-like'    => [
             'placeholder' => 'Search by :parameter'
+        ],
+        'date-interval' => [
+            'from_title'       => 'Start date',
+            'to_title'         => 'End date',
+            'from_placeholder' => 'Search from date',
+            'to_placeholder'   => 'Search to date'
         ]
     ],
     'description' => [

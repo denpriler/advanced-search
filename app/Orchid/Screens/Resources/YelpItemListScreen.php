@@ -2,7 +2,9 @@
 
 namespace App\Orchid\Screens\Resources;
 
+use App\Models\Resources\NDItem;
 use App\Models\Resources\YelpItem;
+use App\Orchid\Filters\DateIntervalFilter;
 use App\Orchid\Filters\IDFilter;
 use App\Orchid\Filters\WhereLikeFilter;
 
@@ -24,7 +26,8 @@ class YelpItemListScreen extends Screen
             IDFilter::class,
             new WhereLikeFilter('name'),
             new WhereLikeFilter('phone'),
-            new WhereLikeFilter('url')
+            new WhereLikeFilter('url'),
+            new DateIntervalFilter(NDItem::CREATED_AT)
         ];
     }
 

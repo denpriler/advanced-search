@@ -11,6 +11,7 @@ use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
+use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Screen\AsSource;
 
 class NDItem extends Model
@@ -63,7 +64,8 @@ class NDItem extends Model
         'name',
         'phone',
         'email',
-        'url'
+        'url',
+        self::CREATED_AT
     ];
 
     /**
@@ -85,18 +87,20 @@ class NDItem extends Model
         'name',
         'phone',
         'email',
-        'url'
+        'url',
+        self::CREATED_AT
     ];
 
     /**
      * Name of columns to which http filtering can be applied
      */
     protected $allowedFilters = [
-        'id'    => Where::class,
-        'name'  => Like::class,
-        'phone' => Like::class,
-        'email' => Like::class,
-        'url'   => Like::class,
+        'id'             => Where::class,
+        'name'           => Like::class,
+        'phone'          => Like::class,
+        'email'          => Like::class,
+        'url'            => Like::class,
+        self::CREATED_AT => WhereDateStartEnd::class
     ];
 
     public static function slug(): string
