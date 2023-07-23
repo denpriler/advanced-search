@@ -8,7 +8,7 @@ export default defineConfig({
             $: 'jquery',
         }),
         laravel({
-            input: ['resources/sass/app.scss', 'resources/js/app.js'],
+            input: ['resources/sass/app.scss', 'resources/js/dashboard.js', 'resources/sass/workspace.scss'],
             refresh: true,
         }),
     ],

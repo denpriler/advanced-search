@@ -149,7 +149,9 @@ return [
      */
 
     'vite' => [
-        'resources/sass/workspace.scss'
+        'resources/sass/workspace.scss',
+        'resources/js/dashboard.js',
+        'resources/sass/app.scss'
     ],
 
     /*
@@ -252,9 +254,9 @@ return [
      */
 
     'search' => [
-        HomeAdvisorItem::class,
-        NDItem::class,
-        YelpItem::class
+//        HomeAdvisorItem::class,
+//        NDItem::class,
+//        YelpItem::class
     ],
 
     /*

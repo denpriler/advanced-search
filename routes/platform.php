@@ -6,6 +6,7 @@ use App\Http\Controllers\AdvancedSearchController;
 use App\Models\Resources\HomeAdvisorItem;
 use App\Models\Resources\NDItem;
 use App\Models\Resources\YelpItem;
+use App\Orchid\Screens\AdvancedSearchScreen;
 use App\Orchid\Screens\ParserHistoryScreen;
 use App\Orchid\Screens\ParserListScreen;
 use App\Orchid\Screens\Resources\HomeAdvisorItemListScreen;
@@ -132,6 +133,6 @@ Route::prefix(YelpItem::slug())->name('platform.' . YelpItem::slug() . '.')->gro
 Route::screen('search/{query}', SearchScreen::class)->name('platform.search');
 
 Route::prefix('advanced-search')->group(function () {
-    Route::get('query/{model}', [AdvancedSearchController::class, 'query'])->name('platform.advanced-search.query');
-    Route::get('/', [AdvancedSearchController::class, 'view'])->name('platform.advanced-search');
+    Route::get('query', [AdvancedSearchController::class, 'query'])->name('platform.advanced-search.query');
+    Route::screen('/', AdvancedSearchScreen::class)->name('platform.advanced-search');
 });

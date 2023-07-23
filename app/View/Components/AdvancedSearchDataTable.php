@@ -17,13 +17,16 @@ class AdvancedSearchDataTable extends Component
     public function __construct(private readonly string $model)
     {
         $this->tableBuilder = app('datatables.html');
+
         $this->tableBuilder
             ->setTableId(class_basename($this->model) . '_table')
-            ->addTableClass('w-100')
-            ->columns(
-                collect($this->model::TABLE_COLUMNS)
-                    ->map(fn($column) => Column::make($column, __("validation.attributes.$column")))
-                    ->toArray()
+            ->addTableClass('w-100 advanced-search-table')
+            ->setTableAttribute('model', $this->model)
+            ->setTableAttribute('route', route('platform.advanced-search.query'))
+            ->setTableAttribute('view', route('platform.' . $this->model::slug() . '.item.view'))
+            ->setTableAttribute('columns', collect($this->model::TABLE_COLUMNS)
+                ->map(fn($column) => Column::make($column, __("validation.attributes.$column")))
+                ->toJson()
             );
     }
 

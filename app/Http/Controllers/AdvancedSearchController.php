@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\AdvancedSearch\AdvancedSearch;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AdvancedSearchController extends Controller
 {
@@ -18,8 +19,14 @@ class AdvancedSearchController extends Controller
     /**
      * @throws \Exception
      */
-    public function query(string $model, Request $request): string
+    public function query(Request $request): string
     {
+        $model = $request->query('model');
+
+        if(!$model) {
+            throw new NotFoundHttpException();
+        }
+
         $this->search->setModel($model);
 
         $query = $request->query('all_words', '');
@@ -43,13 +50,5 @@ class AdvancedSearchController extends Controller
             \Debugbar::addThrowable($e);
             return (new LengthAwarePaginator([], 0, $page))->toJson();
         }
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function view(): mixed
-    {
-        return view('search.search', ['models' => array_keys(config('scout.meilisearch.index-settings'))]);
     }
 }
