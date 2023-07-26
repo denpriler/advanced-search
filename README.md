@@ -1,3 +1,8 @@
+## Docker
+
+Запустить Redis и MEILISEARCH контейнеры
+`docker compose -f docker-compose.prod.yml up -d`
+
 ## .env файл
 
 В config/database.php настроены 3 соединения для разных БД. Нужно в .env указать настройки. Для каждой БД префиксы HA (
