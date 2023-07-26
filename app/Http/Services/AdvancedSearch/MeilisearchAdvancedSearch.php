@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\AdvancedSearch;
 
+use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Meilisearch\Client;
 
@@ -9,6 +10,8 @@ class MeilisearchAdvancedSearch extends AdvancedSearch
 {
     private ?string $anyWordsQuery = null;
     private ?string $noneWordsQuery = null;
+    private ?Carbon $startDate = null;
+    private ?Carbon $endDate = null;
 
     public function __construct()
     {
@@ -53,6 +56,21 @@ class MeilisearchAdvancedSearch extends AdvancedSearch
             $filter[] = $noneFilter;
         }
 
+        $dateFilter = null;
+        if ($this->startDate) {
+            $dateFilter = 'timestamp >= ' . $this->startDate->timestamp;
+        }
+        if ($this->endDate) {
+            if ($dateFilter) {
+                $dateFilter = "$dateFilter AND timestamp <= " . $this->endDate->timestamp;
+            } else {
+                $dateFilter = 'timestamp <= ' . $this->endDate->timestamp;
+            }
+        }
+        if ($dateFilter) {
+            $filter[] = $dateFilter;
+        }
+
         return $filter;
     }
 
@@ -81,6 +99,18 @@ class MeilisearchAdvancedSearch extends AdvancedSearch
     public function pushNoneWordsQuery(string $query): static
     {
         $this->noneWordsQuery = $query;
+        return $this;
+    }
+
+    public function pushStartDate(Carbon $startDate): static
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    public function pushEndDate(Carbon $endDate): static
+    {
+        $this->endDate = $endDate;
         return $this;
     }
 }

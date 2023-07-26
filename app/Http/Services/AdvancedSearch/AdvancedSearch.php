@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\AdvancedSearch;
 
+use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 abstract class AdvancedSearch
@@ -13,6 +14,10 @@ abstract class AdvancedSearch
         $this->model = $model;
         return $this;
     }
+
+    public abstract function pushStartDate(Carbon $startDate): static;
+
+    public abstract function pushEndDate(Carbon $endDate): static;
 
     public abstract function pushAnyWordsQuery(string $query): static;
 

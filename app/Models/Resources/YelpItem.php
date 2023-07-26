@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use App\Orchid\Presenters\Resources\YelpItemPresenter;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -55,7 +56,8 @@ class YelpItem extends Model
         'country',
         'alias',
         'category',
-        'bizid'
+        'bizid',
+        'timestamp'
     ];
 
     public const TABLE_COLUMNS = [
@@ -125,7 +127,10 @@ class YelpItem extends Model
      */
     public function toSearchableArray(): array
     {
-        return $this->toArray();
+        return [
+            ...$this->toArray(),
+            'timestamp' => Carbon::parse($this->getAttribute(self::CREATED_AT))->timestamp
+        ];
     }
 
     /**

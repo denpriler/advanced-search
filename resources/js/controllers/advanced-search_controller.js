@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 export default class extends window.Controller {
-    static targets = ['all_words', 'any_words', 'none_words']
+    static targets = ['all_words', 'any_words', 'none_words', 'date_from', 'date_to']
 
     connect() {
         for (const table of $('.advanced-search-table')) {
@@ -53,6 +53,8 @@ export default class extends window.Controller {
         this.all_wordsTarget.value = ''
         this.any_wordsTarget.value = ''
         this.none_wordsTarget.value = ''
+        this.date_fromTarget.value = ''
+        this.date_toTarget.value = ''
 
         this.refreshTables()
     }
@@ -61,11 +63,13 @@ export default class extends window.Controller {
         const allWords = this.all_wordsTarget.value.toString() ?? null
         const anyWords = this.any_wordsTarget.value.toString() ?? null
         const noneWords = this.none_wordsTarget.value.toString() ?? null
+        const dateFrom = this.date_fromTarget.valueAsNumber ?? null
+        const dateTo = this.date_toTarget.valueAsNumber ?? null
 
-        this.refreshTables(allWords, anyWords, noneWords)
+        this.refreshTables(allWords, anyWords, noneWords, dateFrom, dateTo)
     }
 
-    refreshTables(allWords = null, anyWords = null, noneWords = null) {
+    refreshTables(allWords = null, anyWords = null, noneWords = null, dateFrom = null, dateTo = null) {
         for (const table of $('.advanced-search-table')) {
             const path = $(table).attr('route')
             const datatable = $(table).DataTable()
@@ -80,6 +84,12 @@ export default class extends window.Controller {
             }
             if (noneWords) {
                 urlParams.set('none_words', noneWords)
+            }
+            if (dateFrom) {
+                urlParams.set('date_from', dateFrom / 1000)
+            }
+            if (dateTo) {
+                urlParams.set('date_to', dateTo / 1000)
             }
             datatable.ajax.url(path + '?' + urlParams.toString())
             datatable.ajax.reload()

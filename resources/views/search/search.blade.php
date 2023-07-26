@@ -39,6 +39,22 @@
                        value="{{ request()->query('none_words') }}">
             </label>
         </div>
+        <div class="form-group row">
+            <label for="date_from" class="form-label col-6">
+                @lang('advanced-search.labels.date-from')
+                <br>
+                <input data-advanced-search-target="date_from" class="form-control mw-100" name="date_from"
+                       type="date"
+                       value="{{ request()->query('date_from') }}">
+            </label>
+            <label for="date_to" class="form-label col-6">
+                @lang('advanced-search.labels.date-to')
+                <br>
+                <input data-advanced-search-target="date_to" class="form-control mw-100" name="date_to"
+                       type="date"
+                       value="{{ request()->query('date_to') }}">
+            </label>
+        </div>
         <div class="form-group d-flex flex-row justify-content-end">
             <a class="btn btn-link" type="button"
                data-action="advanced-search#clear">

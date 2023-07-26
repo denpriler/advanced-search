@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use App\Orchid\Presenters\Resources\NDItemPresenter;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -57,7 +58,8 @@ class NDItem extends Model
         'country',
         'route',
         'alias',
-        'bizid'
+        'bizid',
+        'timestamp'
     ];
 
     public const TABLE_COLUMNS = [
@@ -123,7 +125,10 @@ class NDItem extends Model
      */
     public function toSearchableArray(): array
     {
-        return $this->toArray();
+        return [
+            ...$this->toArray(),
+            'timestamp' => Carbon::parse($this->getAttribute(self::CREATED_AT))->timestamp
+        ];
     }
 
     /**
